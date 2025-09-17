@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental: Trajetória de Aprendizagem Front-End com IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #d1d5db;
+        }
+
+        .mindmap-node {
+            position: relative;
+            margin-left: 40px; /* Espaço para as linhas de conexão */
+            padding-left: 20px;
+        }
+
+        /* Linha vertical principal para cada ramo */
+        .mindmap-branch > .mindmap-node::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: -20px;
+            width: 2px;
+            height: calc(100% - 28px);
+            background-color: #374151;
+        }
+        
+        /* Último nó de um ramo não tem linha vertical para baixo */
+        .mindmap-branch:last-child > .mindmap-node::before {
+            height: 0;
+        }
+
+        /* Linha horizontal para cada nó */
+        .mindmap-node::after {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: -20px;
+            width: 20px;
+            height: 2px;
+            background-color: #374151;
+        }
+
+        /* O nó raiz não tem linhas de conexão */
+        .root-node.mindmap-node::before,
+        .root-node.mindmap-node::after {
+            display: none;
+        }
+        
+        .collapsible > svg {
+            transition: transform 0.3s ease;
+        }
+        .collapsed > svg {
+            transform: rotate(-90deg);
+        }
+
+        /* Esconder sub-nós */
+        .sub-nodes.hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-white">🗺️ Mapa Mental Interativo</h1>
+            <p class="text-lg text-gray-400 mt-2">A Sua Trajetória para Dominar Front-End e Automação com IA</p>
+        </header>
+
+        <main id="mindmap-container" class="space-y-4">
+            <!-- PONTO DE PARTIDA -->
+            <div class="mindmap-branch">
+                <div class="mindmap-node root-node">
+                    <div id="ponto-de-partida" class="collapsible flex items-center gap-4 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 transition-transform" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <div class="w-full">
+                            <h2 class="text-xl font-bold text-yellow-400">📍 PONTO DE PARTIDA: Fundamentos Sólidos</h2>
+                            <p class="text-sm text-gray-400">O seu alicerce. Sem isto, nada se sustenta.</p>
+                        </div>
+                    </div>
+                    <div class="sub-nodes mt-4 space-y-4">
+                        <!-- HTML5 -->
+                        <div class="mindmap-node">
+                            <div class="p-4 bg-gray-900 border-l-4 border-orange-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-orange-500">HTML5 (A Estrutura)</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Foco:</span> Tags principais (`div`, `p`, `h1`, `a`, `img`, `input`) e estrutura semântica (`header`, `main`, `footer`).</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Criar uma página de currículo online, usando apenas HTML.</p>
+                                <a href="https://www.youtube.com/watch?v=Ejkb_YpuHWs&list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n" target="_blank" class="inline-block mt-3 bg-orange-600/20 text-orange-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-orange-600/40 transition-colors">▶️ Onde Aprender (Curso em Vídeo)</a>
+                            </div>
+                        </div>
+                        <!-- CSS3 -->
+                        <div class="mindmap-node">
+                           <div class="p-4 bg-gray-900 border-l-4 border-blue-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-blue-500">CSS3 (O Estilo)</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Foco:</span> Seletores, Box Model, Flexbox e Grid Layout para layouts responsivos.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Estilizar a página do currículo. Fazer com que se pareça profissional.</p>
+                                <a href="https://www.youtube.com/watch?v=OmmJBfcMvxg&list=PLHz_AreHm4dlUpEXkY1AyVLQkGcpSgMiL" target="_blank" class="inline-block mt-3 bg-blue-600/20 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-blue-600/40 transition-colors">▶️ Onde Aprender (Curso em Vídeo)</a>
+                            </div>
+                        </div>
+                        <!-- JavaScript -->
+                        <div class="mindmap-node">
+                             <div class="p-4 bg-gray-900 border-l-4 border-yellow-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-yellow-500">JavaScript Básico (A Interatividade)</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Foco:</span> Variáveis, condicionais, loops, funções e manipulação do DOM.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Adicionar um botão "dark mode" no seu site.</p>
+                                <a href="https://www.youtube.com/watch?v=cAgk_Qdq_M8" target="_blank" class="inline-block mt-3 bg-yellow-600/20 text-yellow-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-yellow-600/40 transition-colors">▶️ Onde Aprender (Tutorial Específico)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRILHA 1 -->
+            <div class="mindmap-branch">
+                <div class="mindmap-node root-node">
+                    <div id="trilha-1" class="collapsible flex items-center gap-4 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                        <svg class="w-6 h-6 text-cyan-400 flex-shrink-0 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <div class="w-full">
+                            <h2 class="text-xl font-bold text-cyan-400">🤖 TRILHA 1: Automação com IA no seu Fluxo de Trabalho</h2>
+                            <p class="text-sm text-gray-400">Como usar a IA como a sua assistente pessoal para programar mais rápido.</p>
+                        </div>
+                    </div>
+                     <div class="sub-nodes mt-4 space-y-4">
+                        <!-- Nível 1 -->
+                        <div class="mindmap-node">
+                           <div class="p-4 bg-gray-900 border-l-4 border-cyan-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-cyan-500">Nível 1: IA como Co-piloto de Código</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Ferramentas:</span> ChatGPT, Google Gemini, GitHub Copilot.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Construir uma landing page usando a IA para gerar 50% do código.</p>
+                                <a href="https://www.youtube.com/watch?v=hZQkBI3y_L4" target="_blank" class="inline-block mt-3 bg-cyan-600/20 text-cyan-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-cyan-600/40 transition-colors">▶️ Onde Aprender (Demonstração)</a>
+                            </div>
+                        </div>
+                        <!-- Nível 2 -->
+                        <div class="mindmap-node">
+                             <div class="p-4 bg-gray-900 border-l-4 border-cyan-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-cyan-500">Nível 2: IA como Debugger e Mentora</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Habilidades:</span> Colar erros e pedir explicações. Pedir para a IA ensinar conceitos.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Tentar construir um Jogo da Velha e usar a IA para resolver os bugs.</p>
+                                <a href="https://www.youtube.com/watch?v=M2gBOdOgLhA" target="_blank" class="inline-block mt-3 bg-cyan-600/20 text-cyan-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-cyan-600/40 transition-colors">▶️ Onde Aprender (Tutorial Jogo da Velha)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRILHA 2 -->
+            <div class="mindmap-branch">
+                <div class="mindmap-node root-node">
+                    <div id="trilha-2" class="collapsible flex items-center gap-4 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                        <svg class="w-6 h-6 text-indigo-400 flex-shrink-0 transition-transform" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <div class="w-full">
+                            <h2 class="text-xl font-bold text-indigo-400">🚀 TRILHA 2: Integração de IA nas Suas Aplicações</h2>
+                            <p class="text-sm text-gray-400">Fazer com que os seus sites usem IA para oferecer funcionalidades inteligentes.</p>
+                        </div>
+                    </div>
+                    <div class="sub-nodes mt-4 space-y-4">
+                        <!-- Nível 1 -->
+                        <div class="mindmap-node">
+                            <div class="p-4 bg-gray-900 border-l-4 border-indigo-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-indigo-500">Nível 1: APIs e JavaScript Assíncrono</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Conceitos:</span> Entender o que é uma API. Aprender `fetch()` e `async/await`.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Criar uma página que mostra a previsão do tempo de uma cidade.</p>
+                                <a href="https://www.youtube.com/watch?v=aGgsa-y4_8s" target="_blank" class="inline-block mt-3 bg-indigo-600/20 text-indigo-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-indigo-600/40 transition-colors">▶️ Onde Aprender (Tutorial API de Clima)</a>
+                            </div>
+                        </div>
+                        <!-- Nível 2 -->
+                        <div class="mindmap-node">
+                            <div class="p-4 bg-gray-900 border-l-4 border-indigo-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-indigo-500">Nível 2: Conectando-se a uma IA Real</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">Habilidades:</span> Fazer chamadas para as APIs do Google Gemini ou OpenAI a partir do seu JavaScript.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Evoluir o projeto `Solucell SP` para usar uma IA de verdade.</p>
+                                <a href="https://www.youtube.com/watch?v=S2zP3_g_iL4" target="_blank" class="inline-block mt-3 bg-indigo-600/20 text-indigo-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-indigo-600/40 transition-colors">▶️ Onde Aprender (API do Gemini com JS)</a>
+                            </div>
+                        </div>
+                        <!-- Nível 3 -->
+                        <div class="mindmap-node">
+                            <div class="p-4 bg-gray-900 border-l-4 border-indigo-500 rounded-r-lg">
+                                <h3 class="font-bold text-lg text-indigo-500">Nível 3: Frameworks Modernos</h3>
+                                <p class="mt-1 text-sm"><span class="font-semibold">O Caminho:</span> Depois de dominar JS puro, escolher e aprender um framework como React.</p>
+                                <p class="mt-2 text-xs italic text-gray-500">Projeto Prático: Reconstruir o projeto `Solucell SP` usando React.</p>
+                                <a href="https://www.youtube.com/watch?v=aTf8QTjw4wM&list=PL85ITvJ79sUhputM5A73P39M3I9dG04u9" target="_blank" class="inline-block mt-3 bg-indigo-600/20 text-indigo-400 text-xs font-semibold px-3 py-1 rounded-full hover:bg-indigo-600/40 transition-colors">▶️ Onde Aprender (Curso de React da Rocketseat)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OBJETIVO FINAL -->
+            <div class="mindmap-branch">
+                 <div class="mindmap-node root-node">
+                    <div id="objetivo-final" class="collapsible flex items-center gap-4 p-4 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                        <svg class="w-6 h-6 text-green-400 flex-shrink-0 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <div class="w-full">
+                            <h2 class="text-xl font-bold text-green-400">🏁 OBJETIVO FINAL: O seu Portfólio de Projetos</h2>
+                            <p class="text-sm text-gray-400">A prova definitiva das suas habilidades.</p>
+                        </div>
+                    </div>
+                    <div class="sub-nodes mt-4 space-y-4">
+                        <!-- Projetos -->
+                        <div class="mindmap-node">
+                            <div class="p-4 bg-gray-900 border-l-4 border-green-500 rounded-r-lg">
+                                <ul class="list-disc list-inside space-y-2 text-sm">
+                                    <li><span class="font-semibold">Currículo Online:</span> Simples, elegante e responsivo.</li>
+                                    <li><span class="font-semibold">Jogo da Velha:</span> Demonstra lógica de programação.</li>
+                                    <li><span class="font-semibold">App de Previsão do Tempo:</span> Mostra consumo de APIs.</li>
+                                    <li><span class="font-semibold text-yellow-300">Solucell SP (Projeto Completo):</span> A sua obra-prima com design, interatividade e integração de IA.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const collapsibles = document.querySelectorAll('.collapsible');
+
+            collapsibles.forEach(item => {
+                // Iniciar todos como "recolhidos" por defeito
+                const subNodes = item.nextElementSibling;
+                if (subNodes && subNodes.classList.contains('sub-nodes')) {
+                    subNodes.classList.add('hidden');
+                    item.classList.add('collapsed');
+                }
+
+                item.addEventListener('click', () => {
+                    item.classList.toggle('collapsed');
+                    if (subNodes && subNodes.classList.contains('sub-nodes')) {
+                        subNodes.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
